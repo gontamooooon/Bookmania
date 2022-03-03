@@ -1,24 +1,38 @@
-# README
+#Bookマニア
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+様々なユーザと読んだ本の紹介や感想を共有できるサイト。
+サイトを通じて、自分が気になった本をお気に入り登録したり、本の好みが合う人をフォローして
+感想を共有し合ったり、またコメント機能や評価機能をつけることで本に対する評価を知ることができる
 
-Things you may want to cover:
+※画像投稿に関しましては、著作権関係上、本のページの掲載はお控えください。
 
-* Ruby version
+### サイトテーマ
+読んだ本のシェアとレビューを参照し読みたい本を探す。
 
-* System dependencies
+### テーマを選んだ理由
+私は本を読むことが大好きで、毎日寝る前に必ず本を読んでいます。本を読み終え、次に読みたい本を考える際、
+私はレビューをみて次に読む本を決めています。通販サイトにはレビューや本に対する評価が載っており、購入時の参考となるのですが
+本の評価や感想を専門としているサイトがあまりありません。本好きな人を集め、本の感想を言い合えるような環境があれば、自分のおすすめの本を紹介できたり、
+感想を共有し合い、盛り上がることができると思います。また、次に読みたい本を選ぶ際の参考になるのではと思い、このテーマにしました。
 
-* Configuration
+### ターゲットユーザ
+本好きな人はもちろん、次に読む本を探している人、読書を習慣づけようとしている人やみんなで本の感想を言い合いたいと考えている人。
 
-* Database creation
+### 主な利用シーン
+自分が読んだ本の感想を誰かに共有したいときや、他人がおすすめする本を知りたいとき、次に読む本を探しているときなど。
+また、本を通じた交流の場としても活用できます。
 
-* Database initialization
 
-* How to run the test suite
+## 設計書
+<...>
 
-* Services (job queues, cache servers, search engines, etc.)
+## チャレンジ要素一覧
 
-* Deployment instructions
 
-* ...
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
