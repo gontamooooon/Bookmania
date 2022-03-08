@@ -28,7 +28,7 @@
 - 【ER図】https://drive.google.com/file/d/1KYLxDROD8ACLRGZLOECKicFcgmnIpKEn/view?usp=sharing
 - 【ワイヤーフレーム】
 - 【テーブル設計書】https://docs.google.com/spreadsheets/d/1-R_Zyp-bfxmwKipcfKicMca-MNy7Skb8cG-o6akuiC4/edit?usp=sharing
-- 【アプリケーション詳細設計書】
+- 【アプリケーション詳細設計書】https://docs.google.com/spreadsheets/d/1-aKvDFKQhvqsYzNh5ILRZoa4PVMumdddEYU9tlIgbRc/edit?usp=sharing
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1NO37ccGjxV8rfwU-Psd3-zRPtvRuv5V1943S3nub4vk/edit?usp=sharing
