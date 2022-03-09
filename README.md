@@ -26,7 +26,7 @@
 
 ## 設計書
 - 【ER図】https://drive.google.com/file/d/1KYLxDROD8ACLRGZLOECKicFcgmnIpKEn/view?usp=sharing
-- 【ワイヤーフレーム】
+- 【ワイヤーフレーム】https://drive.google.com/file/d/1oraS8rplgD70eK76OQkwB_UvE04aXPfU/view?usp=sharing
 - 【テーブル設計書】https://docs.google.com/spreadsheets/d/1-R_Zyp-bfxmwKipcfKicMca-MNy7Skb8cG-o6akuiC4/edit?usp=sharing
 - 【アプリケーション詳細設計書】https://docs.google.com/spreadsheets/d/1-aKvDFKQhvqsYzNh5ILRZoa4PVMumdddEYU9tlIgbRc/edit?usp=sharing
 
