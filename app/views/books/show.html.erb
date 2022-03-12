@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <h3>タイトル：<%= @book.title %></h3>
+
+    <%= image_tag @book.get_book_image,size:"100x100" %>
+    <table class="table">
+      <tr>
+        <td>著者：</td>
+        <td><%= @book.author %></td>
+      </tr>
+      <tr>
+        <td>ジャンル：</td>
+        <td><%= @book.genre %></td>
+      </tr>
+      <tr>
+        <td>楽天ブックス</td>
+        <td>TSUTAYA ONLINE</td>
+        <td>■紀伊國屋書店</td>
+      </tr>
+      <tr>
+        <td><%= link_to "戻る",books_path, class:"btn btn-primary" %></td>
+      </tr>
+    </table>
+  </div>
+</div>

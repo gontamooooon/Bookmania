@@ -9,39 +9,34 @@
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <li>
-            <%= link_to user_path(current_user),class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> home
-            <% end %>
-          </li>
-          <li>
             <%=  link_to users_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-users"></i> users
+              <i class="fas fa-users"></i> つながる
             <% end %>
           </li>
           <li>
             <%=  link_to books_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-book-open"></i> books
+              <i class="fas fa-book-open"></i> みる
+            <% end %>
+          </li>
+          <li>
+            <%=  link_to user_path(current_user) ,class: 'nav-link text-light' do %>
+              <i class="fas fa-book-open"></i> マイページ
             <% end %>
           </li>
           <li>
             <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
-              <i class="fas fa-sign-out-alt"></i> logout
+              <i class="fas fa-sign-out-alt"></i> ログアウト
             <% end %>
           </li>
         <% else %>
           <li>
-            <%= link_to root_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> home
-            <% end %>
-          </li>
-          <li>
             <%= link_to new_user_registration_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-user-plus"></i> sign up
+              <i class="fas fa-user-plus"></i> 新規会員登録
             <% end %>
           </li>
           <li>
             <%= link_to new_user_session_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-sign-in-alt"></i> login
+              <i class="fas fa-sign-in-alt"></i> ログイン
             <% end %>
           </li>
         <% end %>

@@ -1,4 +1,5 @@
-<%= form_with model: book, local: true do |f| %>
+<%= form_with model: @book, url: books_path, method: :post, local: true do |f| %>
+<%= render 'layouts/error', model: @book %>
   <div class="form-group">
     <%= f.label :タイトル %>
     <%= f.text_field :title, class: 'form-control book_title' %>
@@ -9,13 +10,13 @@
   </div>
   <div class="form-group">
     <%= f.label :ジャンル %>
-    <%= f.select :genre, options_for_select([[“文芸”], [“実用書”],  [“ビジネス書”,], [“絵本・児童書”],[“学習参考書”],[“専門書”],[“コミック、雑誌”]]) %>
+    <%= f.select :genre, options_for_select([["選択して下さい"], ["文芸"], ["実用書"],  ["ビジネス書"], ["絵本・児童書"],["学習参考書"],["専門書"],["コミック、雑誌"]]) %>
   </div>
   <div class="form-group">
     <%= f.label :説明 %>
     <%= f.text_area :body, class: 'form-control book_body' %>
   </div>
   <div class="form-group">
-    <%= f.submit '新規投稿', class: 'btn btn-success' %>
+    <%= f.submit '新規レビュー投稿', class: 'btn btn-success' %>
   </div>
 <% end %>

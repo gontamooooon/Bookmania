@@ -1,2 +1,86 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h3><%= @user.name %>さんのプロフィール</h3>
+      <div class="col-md-3">
+       <h5>マイプロフィール</h5>
+       <% if current_user != @user %>
+       <% else %>
+         <%= link_to "編集する",edit_user_path(@user), class:"btn btn-success" %>
+       <% end %>
+       <table class="table">
+         <%= image_tag @user.get_profile_image, size:'50x50' %>
+         <tr>
+          <th>名前</th>
+          <th><%= @user.name %></th>
+         </tr>
+         <tr>
+          <th>自己紹介</th>
+          <th><%= @user.introduction %></th>
+         </tr>
+         <tr>
+          <th>好きな本のジャンル</th>
+          <th><%#= @user.books.genre %></th>
+         </tr>
+         <tr>
+           <th>お気に入り</th>
+         </tr>
+         <tr>
+           <th>フォロー数：</th>
+           <th></th>
+         </tr>
+         <tr>
+           <th>フォロワー数：</th>
+           <th></th>
+         </tr>
+       </table>
+     </div>
+
+     <div class="col-md-8 offset-md-1">
+       <h5>マイ読書レビュー</h5>
+       <% if current_user != @user %>
+       <% else %>
+         <%= link_to "本の新規レビュー作成",new_book_path, class:"btn btn-primary" %>
+       <% end %>
+         <% @books.each do |book| %>
+          <div>
+            <% if book.book_image.attached? %>
+              <%= image_tag book.book_image, size: "50x50" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "50x50" %>
+            <% end %>
+          </div>
+          <table class="table">
+            <tr>
+              <td><%= book.title %></td>
+            </tr>
+            <tr>
+              <td>著者：</td>
+              <td><%= book.author %></td>
+            </tr>
+            <tr>
+              <td>ジャンル：</td>
+              <td><%= book.genre %></td>
+            </tr>
+            <tr>
+              <td>評価：</td>
+            </tr>
+            <tr>
+              <td><%=book.body %></td>
+            </tr>
+            <tr>
+                <td>投稿日：</td>
+              <td><%=book.created_at.strftime("%Y/%m/%d") %></td>
+            </tr>
+            <tr>
+              <% if @user.id == current_user.id %>
+                <td><%= link_to "編集", edit_book_path(book), class:"btn btn-success" %></td>
+                <td><%= link_to "削除", book_path(book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
+              <% end %>
+            </tr>
+          </table>
+         <% end %>
+     </div>
+  </div>
+</div>
+
+
