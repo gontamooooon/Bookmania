@@ -8,6 +8,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @books = @user.books
+    # ログイン中のユーザーのお気に入りのbook_idカラムを取得
+    favorites = Favorite.where(user_id: current_user.id).pluck(:book_id)
+    # booksテーブルから、お気に入り登録済みのレコードを取得
+
   end
 
   def edit

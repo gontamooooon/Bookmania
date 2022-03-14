@@ -13,28 +13,38 @@
     <div class="col-7">
       <table class="table">
         <tr>
-          <td>名前：</td>
-          <td><%= user.name %></td>
+          <td>
+            名前：<%= user.name %>
+          </td>
         </tr>
         <tr>
-          <td>自己紹介：</td>
-          <td><%= user.introduction %></td>
+          <td>
+            自己紹介：<%= user.introduction %>
+          </td>
         </tr>
         <tr>
-          <td>好きな本のジャンル：</td>
-          <td><%#= user.book.genre %></td>
+          <td>
+            好きな本のジャンル：<%#= user.book.genre %>
+          </td>
         </tr>
         <tr>
-          <td>レビュー：</td>
-          <td><%= link_to "公開〇件", user_path(user) %></td>
+          <td>
+            レビュー：
+            <%= link_to user_path(user) do %>
+              公開<%= user.books.count %>件
+            <% end %>
+          </td>
         </tr>
         <tr>
           <td>フォロー数：</td>
-          <td></td>
         </tr>
         <tr>
           <td>フォロワー数：</td>
-          <td></td>
+        </tr>
+        <tr>
+          <td>
+            コメント件数：<%= link_to user.receive_comment_count, user_path(user) %>
+          </td>
         </tr>
       </table>
     </div>

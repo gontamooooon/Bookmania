@@ -68,8 +68,18 @@
               <td><%=book.body %></td>
             </tr>
             <tr>
-                <td>投稿日：</td>
+              <td>投稿日：</td>
               <td><%=book.created_at.strftime("%Y/%m/%d") %></td>
+            </tr>
+            <tr>
+              <td>コメント件数：<%= book.book_comments.count %></td>
+              <td>
+                <% book.book_comments.each do |book_comment| %>
+                  <p><%= image_tag book_comment.user.get_profile_image, size: "30x30" %></p>
+                  <p><%= book_comment.user.name %></p>
+                  <p><%= book_comment.created_at.strftime('%Y/%m/%d') %><%= book_comment.comment %></p>
+                <% end %>
+              </td>
             </tr>
             <tr>
               <% if @user.id == current_user.id %>
