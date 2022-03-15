@@ -1,25 +1,46 @@
 <div class="container">
   <div class="row">
-    <h3>タイトル：<%= @book.title %></h3>
+    <div class='col-md-8 offset-md-1'>
+  		<h3><%= @book.title %></h3>
+  		<table class='table'>
+  		  <tr>
+          <td><%= link_to(@book.user) do %>
+            <%= image_tag @book.user.get_profile_image,size:"50x50" %><br>
+            <%= @book.user.name %>
+            <% end %>
+          </td>
+          <td>説明：<%= @book.body %></td>
 
-    <%= image_tag @book.get_book_image,size:"100x100" %>
-    <table class="table">
-      <tr>
-        <td>著者：</td>
-        <td><%= @book.author %></td>
-      </tr>
-      <tr>
-        <td>ジャンル：</td>
-        <td><%= @book.genre %></td>
-      </tr>
-      <tr>
-        <td>楽天ブックス</td>
-        <td>TSUTAYA ONLINE</td>
-        <td>■紀伊國屋書店</td>
-      </tr>
-      <tr>
-        <td><%= link_to "戻る",books_path, class:"btn btn-primary" %></td>
-      </tr>
-    </table>
+          <!--コメント数-->
+          <td id="comments_count">
+            コメント数：<%= render "book_comments/count", book: @book %>
+          </td>
+
+          <!--いいね機能-->
+          <td id="favorite_buttons_<%= @book.id %>">
+            <%= render "favorites/favorite-btn", book: @book %>
+          </td>
+
+          <!--星形レビュー-->
+          <td><%= render "static_rate", book: @book %></td>
+
+          <% if @book.user_id == current_user.id %>
+            <td><%= link_to '編集', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
+            <td><%= link_to '削除', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%></td>
+          <% end %>
+        </tr>
+      </table>
+
+      <!--コメントフォームの部分テンプレート-->
+      <div class="new-comment">
+        <%= render "book_comments/form", book: @book, book_comment: @book_comment %>
+      </div>
+
+      <!--コメント一覧部分-->
+      <!--一覧(index)部分でclassにしてしまうと投稿したものすべてに反映されてしまうので任意の一つを指定するidを使う-->
+      <div id="comments_area">
+        <%= render "book_comments/index", book: @book %>
+      </div>
+    </div>
   </div>
 </div>

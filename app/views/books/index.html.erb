@@ -3,9 +3,10 @@
     <tr>
       <th></th>
       <th>タイトル</th>
-      <th>作者</th>
+      <th>著者</th>
       <th>ジャンル</th>
       <th>説明</th>
+      <th>評価</th>
       <th>コメント件数</th>
     </tr>
   </thead>
@@ -22,22 +23,12 @@
         <td><%= book.author %></td>
         <td><%= book.genre %></td>
         <td><%= book.body %></td>
-        <td><%= link_to "#{book.book_comments.count}", user_path(book.user) %></td>
-        <td>
-          <% book.book_comments.each do |book_comment| %>
-            <%= image_tag book_comment.user.get_profile_image, size:"20x20" %>
-            <%= book_comment.user.name %>
-            <%= book_comment.created_at.strftime('%Y/%m/%d') %><%= book_comment.comment %>
-            <% if book_comment.user == current_user %>
-              <%= link_to "コメントを削除",book_book_comment_path(book_id: book_comment.book_id, id: book_comment.id), method: :delete %>
-            <% end %>
-          <% end %>
-          <div>
-            <%= form_with model: [book, @book_comment] do |f| %>
-              <%= f.text_field :comment, rows: '5', placeholder: "コメントをここに" %>
-              <%= f.submit "コメント投稿", class:"btn btn-warning" %>
-            <% end %>
-          </div>
+        <!--星形レビュー-->
+        <td><%= render "static_rate", book: book %></td>
+        <td><%= render "book_comments/count", book: book %></td>
+        <!--部分テンプレートにした箇所（部分的に更新したい箇所）-->
+        <td id="favorite_buttons_<%= book.id %>">
+          <%= render "favorites/favorite-btn", book: book %>
         </td>
       </tr>
     <% end %>

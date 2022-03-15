@@ -9,8 +9,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     # ログイン中のユーザーのお気に入りのbook_idカラムを取得
-    favorites = Favorite.where(user_id: current_user.id).pluck(:book_id)
+    favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc).pluck(:book_id)
     # booksテーブルから、お気に入り登録済みのレコードを取得
+    @favorite_list = Book.find(favorites)
 
   end
 

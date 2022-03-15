@@ -1,0 +1,4 @@
+<!--books/index,showの記述-->
+$('#favorite_buttons_<%= @book.id %>').html("<%= j(render "favorites/favorite-btn", book: @book) %>");
+
+<!--インスタンス変数は、favorites_controllerのdestroyアクションで定義されたものを持ってくる-->

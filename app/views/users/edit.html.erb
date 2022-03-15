@@ -4,6 +4,7 @@
       <h3>プロフィール編集</h3>
       <%= form_with model: @user, url: user_path(current_user), method: :patch, local:true do |f| %>
       <%= render 'layouts/error', model: @user %>
+      
         <div class="form-group">
           <%= f.label :プロフィール画像 %>
           <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
@@ -18,12 +19,6 @@
         </div>
         <div class="form-group">
           <%= f.label :好きな本のジャンル %>
-        </div>
-        <div class="form-group">
-          <%= f.label :フォロー数 %>
-        </div>
-        <div class="form-group">
-          <%= f.label :フォロワー数 %>
         </div>
         <div class="form-group">
           <%= f.submit "プロフィール更新", class:"btn btn-success" %>

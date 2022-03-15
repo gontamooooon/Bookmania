@@ -11,7 +11,11 @@ class Book < ApplicationRecord
   def get_book_image
     (book_image.attached?) ? book_image : 'no_image.jpg'
   end
-  
+
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
+
   # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"
@@ -26,5 +30,5 @@ class Book < ApplicationRecord
       @book = Book.all
     end
   end
-  
+
 end

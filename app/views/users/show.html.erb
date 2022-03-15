@@ -22,9 +22,6 @@
           <th><%#= @user.books.genre %></th>
          </tr>
          <tr>
-           <th>お気に入り</th>
-         </tr>
-         <tr>
            <th>フォロー数：</th>
            <th></th>
          </tr>
@@ -42,49 +39,45 @@
          <%= link_to "本の新規レビュー作成",new_book_path, class:"btn btn-primary" %>
        <% end %>
          <% @books.each do |book| %>
-          <div>
+          <table class="table table-borderless">
             <% if book.book_image.attached? %>
               <%= image_tag book.book_image, size: "50x50" %>
             <% else %>
               <%= image_tag 'no_image', size: "50x50" %>
             <% end %>
-          </div>
-          <table class="table">
             <tr>
-              <td><%= book.title %></td>
+              <td>タイトル：<%= book.title %></td>
             </tr>
             <tr>
-              <td>著者：</td>
-              <td><%= book.author %></td>
+              <td>著者：<%= book.author %></td>
+            <tr>
+              <td>ジャンル：<%= book.genre %></td>
             </tr>
             <tr>
-              <td>ジャンル：</td>
-              <td><%= book.genre %></td>
+              <td>評価：<%= render "books/static_rate", book: book %></td>
             </tr>
             <tr>
-              <td>評価：</td>
+              <td>本の説明：<%=book.body %></td>
             </tr>
             <tr>
-              <td><%=book.body %></td>
+              <td>投稿日：<%=book.created_at.strftime("%Y/%m/%d") %></td>
             </tr>
             <tr>
-              <td>投稿日：</td>
-              <td><%=book.created_at.strftime("%Y/%m/%d") %></td>
-            </tr>
-            <tr>
-              <td>コメント件数：<%= book.book_comments.count %></td>
               <td>
-                <% book.book_comments.each do |book_comment| %>
-                  <p><%= image_tag book_comment.user.get_profile_image, size: "30x30" %></p>
-                  <p><%= book_comment.user.name %></p>
-                  <p><%= book_comment.created_at.strftime('%Y/%m/%d') %><%= book_comment.comment %></p>
-                <% end %>
+                いいね数：<%= book.favorites.count %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                コメント数：<%= render "book_comments/count", book: book %>
               </td>
             </tr>
             <tr>
               <% if @user.id == current_user.id %>
-                <td><%= link_to "編集", edit_book_path(book), class:"btn btn-success" %></td>
-                <td><%= link_to "削除", book_path(book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
+              <td>
+                <%= link_to "編集", edit_book_path(book), class:"btn btn-success" %>
+                <%= link_to "削除", book_path(book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
+              </td>
               <% end %>
             </tr>
           </table>
