@@ -1,18 +1,24 @@
 class UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:update]
-  
+
   def index
     @users = User.all
   end
 
   def show
+    # ソート機能
     @user = User.find(params[:id])
-    @books = @user.books
-    # ログイン中のユーザーのお気に入りのbook_idカラムを取得
-    favorites = Favorite.where(user_id: current_user.id).order(created_at: :desc).pluck(:book_id)
-    # booksテーブルから、お気に入り登録済みのレコードを取得
-    @favorite_list = Book.find(favorites)
-
+    if params[:sort] == "new_arrival_order"
+      @books = @user.books.page(params[:page]).order(created_at: :desc)
+    elsif params[:sort] == "posting_order"
+      @books = @user.books.page(params[:page]).order(created_at: :asc)
+    elsif params[:sort] == "highly_rated"
+      @books = Book.page(params[:page]).order(rate: :desc)
+    elsif params[:sort] == "low_rating"
+      @books = Book.page(params[:page]).order(rate: :asc)
+    else
+      @books = @user.books.page(params[:page]).order(created_at: :desc)
+    end
   end
 
   def edit
@@ -22,7 +28,7 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
-  
+
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
@@ -31,17 +37,17 @@ class UsersController < ApplicationController
       render:edit
     end
   end
-    
-    private
-    
-    def user_params
-      params.require(:user).permit(:name, :introduction, :profile_image)
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :introduction, :profile_image)
+  end
+
+  def ensure_correct_user
+    @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to user_path(current_user)
     end
-    
-    def ensure_correct_user
-      @user = User.find(params[:id])
-      unless @user == current_user
-        redirect_to user_path(current_user)
-      end
-    end
+  end
 end

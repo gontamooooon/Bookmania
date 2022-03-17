@@ -3,7 +3,10 @@
     <h3><%= @user.name %>さんのプロフィール</h3>
       <div class="col-md-3">
        <h5>マイプロフィール</h5>
+       <div class="row">
        <% if current_user != @user %>
+       <!--フォローボタンor編集ボタン-->
+         <%= render "relationships/form", user: @user %>
        <% else %>
          <%= link_to "編集する",edit_user_path(@user), class:"btn btn-success" %>
        <% end %>
@@ -18,21 +21,26 @@
           <th><%= @user.introduction %></th>
          </tr>
          <tr>
-          <th>好きな本のジャンル</th>
-          <th><%#= @user.books.genre %></th>
-         </tr>
-         <tr>
            <th>フォロー数：</th>
-           <th></th>
+           <th><%= link_to @user.followings.count, user_followings_path(@user) %></th>
          </tr>
          <tr>
            <th>フォロワー数：</th>
-           <th></th>
+           <th><%= link_to @user.followers.count, user_followers_path(@user) %></th>
          </tr>
        </table>
      </div>
 
      <div class="col-md-8 offset-md-1">
+       <!--ソート機能-->
+       <span><%= link_to "新着順",user_path(sort: "new_arrival_order"), class: "btn btn-sm btn-link" %></span>
+       <span>|</span>
+       <span><%= link_to "投稿順",user_path(sort: "posting_order"), class: "btn btn-sm btn-link" %></span>
+       <span>|</span>
+       <span><%= link_to "高評価順",user_path(sort: "highly_rated"), class: "btn btn-sm btn-link" %></span>
+       <span>|</span>
+       <span><%= link_to "低評価順",user_path(sort: "low_rating"), class: "btn btn-sm btn-link"  %></span>
+       
        <h5>マイ読書レビュー</h5>
        <% if current_user != @user %>
        <% else %>
@@ -69,7 +77,10 @@
             </tr>
             <tr>
               <td>
-                コメント数：<%= render "book_comments/count", book: book %>
+                コメント数：
+                <%= link_to book_path(book) do %>
+                  <%= render "book_comments/count", book: book %>
+                <% end %>
               </td>
             </tr>
             <tr>
@@ -85,5 +96,5 @@
      </div>
   </div>
 </div>
-
-
+<!--ページネーション-->
+<div class="d-flex justify-content-center"><%= paginate @books %></div>

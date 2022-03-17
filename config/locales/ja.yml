@@ -12,11 +12,18 @@ ja:
       book:
         title: タイトル
         author: 著者
-        body: 説明
         genre: ジャンル
+        body: 説明
+        
 
       user:
         name: 名前
+
+      contact:
+        name: お名前
+        phone_number: 電話番号
+        email: メールアドレス
+        message: お問い合わせ内容
 
   date:
     abbr_day_names:

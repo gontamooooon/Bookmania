@@ -1,4 +1,12 @@
 <table class='table table-hover table-inverse'>
+  <!--ソート機能-->
+  <span><%= link_to "新着順",books_path(sort: "new_arrival_order"), class: "btn btn-sm btn-link" %></span>
+  <span>|</span>
+  <span><%= link_to "投稿順",books_path(sort: "posting_order"), class: "btn btn-sm btn-link" %></span>
+  <span>|</span>
+  <span><%= link_to "高評価順",books_path(sort: "highly_rated"), class: "btn btn-sm btn-link" %></span>
+  <span>|</span>
+  <span><%= link_to "低評価順",books_path(sort: "low_rating"), class: "btn btn-sm btn-link"  %></span>
   <thead>
     <tr>
       <th></th>
@@ -23,10 +31,12 @@
         <td><%= book.author %></td>
         <td><%= book.genre %></td>
         <td><%= book.body %></td>
+
         <!--星形レビュー-->
         <td><%= render "static_rate", book: book %></td>
+        <!--コメント数-->
         <td><%= render "book_comments/count", book: book %></td>
-        <!--部分テンプレートにした箇所（部分的に更新したい箇所）-->
+        <!--いいねボタン-->
         <td id="favorite_buttons_<%= book.id %>">
           <%= render "favorites/favorite-btn", book: book %>
         </td>
@@ -34,3 +44,5 @@
     <% end %>
   </tbody>
 </table>
+<!--ページネーション-->
+<div class="d-flex justify-content-center"><%= paginate @books %></div>
