@@ -2,8 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.main-visual{
+.background-img{
   background-image: image-url("washi.jpg");
+}
+
+.main-visual{
+  background-color: #ffe9a9;
 }
 
 .heading{
@@ -20,26 +24,36 @@
 .secondary-title{
   background-color: white;
   color: black;
-  text-align: center;
   padding: 3px 0;
+}
+
+.content-img{
+  margin: 20px;
 }
 
 .main-content{
   display: flex;
 }
 
+.main-content1{
+  flex-direction: column;
+}
+
 .content-tr{
   display: flex;
 }
+.content-td{
+  margin: 10px;
+}
 
 .tmp-table-tr {
-    width: 80%;
-    height: 30%;
-    background-color: ivory;
+  width: 80%;
+  height: 30%;
+  background-color: ivory;
 }
 
 .tmp-table-td {
-    width: 30%;
-    height: 100%;
-    background-color: red;
+  width: 30%;
+  height: 100%;
+  background-color: red;
 }

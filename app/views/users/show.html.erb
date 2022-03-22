@@ -1,4 +1,4 @@
-<div class="main-visual">
+<div class="container main-visual">
   <div class="row justify-content-center">
     <h3 class="p-3"><span class="header "><%= @user.name %>さんのプロフィール</span></h3>
   </div>
@@ -9,7 +9,7 @@
            <div class="common-btn">
                <% if current_user != @user %>
                <!--フォローボタンor編集ボタン-->
-                 <%= render "relationships/form", user: @user, class:"btn btn-success btn-sm" %>
+                 <%= render "relationships/form", user: @user%>
                <% else %>
                  <%= link_to "編集する",edit_user_path(@user), class:"btn btn-success btn-sm" %>
                <% end %>
@@ -17,23 +17,23 @@
        </div>
        <div class="main-content">
            <div class="content">
-               <div class="content-img"><%= image_tag @user.get_profile_image, size:'90x100' %></div>
+               <div class="content-img"><%= image_tag @user.get_profile_image, size:'50x50' %></div>
            </div>
            <div class="content">
                <div class="content-tr">
-                   <div class="content-td">名前</div>
+                   <div class="content-td">名前：</div>
                    <div class="content-td"><%= @user.name %></div>
                </div>
                <div class="content-tr">
-                   <div class="content-td">自己紹介</div>
+                   <div class="content-td">自己紹介：</div>
                    <div class="content-td"><%= @user.introduction %></div>
                </div>
                <div class="content-tr">
-                   <div class="content-td">フォロー数</div>
+                   <div class="content-td">フォロー数：</div>
                    <div class="content-td"><%= link_to @user.followings.count, user_followings_path(@user) %></div>
                </div>
                <div class="content-tr">
-                   <div class="content-td">フォロワー数</div>
+                   <div class="content-td">フォロワー数：</div>
                    <div class="content-td"><%= link_to @user.followers.count, user_followers_path(@user) %></div>
                </div>
            </div>
@@ -59,28 +59,28 @@
                <span><%= link_to "低評価順",user_path(sort: "low_rating"), class: "btn btn-sm btn-link"  %></span>
             </div>
        </div>
-       <div class="main-content">
+       <div class="main-content1">
          <% @books.each do |book| %>
             <div class="content">
                <div class="content-img">
                   <% if book.book_image.attached? %>
-                    <%= image_tag book.book_image, size:"70x70" %>
+                    <%= image_tag book.book_image, size:"50x50" %>
                   <% else %>
-                    <%= image_tag 'no_image', size:"70x70" %>
+                    <%= image_tag 'no_image', size:"50x50" %>
                   <% end %>
                </div>
             </div>
             <div class="content">
                <div class="content-tr">
-                   <div class="content-td">タイトル</div>
-                   <div class="content-td"><%= book.title %></div>
+                   <div class="content-td"><strong>タイトル：</strong></div>
+                   <div class="content-td"><strong><%= book.title %></strong></div>
                </div>
                <div class="content-tr">
-                   <div class="content-td">著者</div>
+                   <div class="content-td">著者：</div>
                    <div class="content-td"><%= book.author %></div>
                </div>
                <div class="content-tr">
-                   <div class="content-td">ジャンル</div>
+                   <div class="content-td">ジャンル：</div>
                    <div class="content-td"><%= book.genre %></div>
                </div>
                <div class="content-tr">
@@ -88,19 +88,19 @@
                    <div class="content-td"><%= render "books/static_rate", book: book %></div>
                </div>
                <div class="content-tr">
-                   <div class="content-td">本の説明</div>
+                   <div class="content-td">本の説明：</div>
                    <div class="content-td"><%=book.body %></div>
                </div>
                <div class="content-tr">
-                   <div class="content-td">投稿日</div>
+                   <div class="content-td">投稿日：</div>
                    <div class="content-td"><%=book.created_at.strftime("%Y/%m/%d") %></div>
                </div>
                <div class="content-tr">
-                   <div class="content-td">いいね数</div>
+                   <div class="content-td">いいね数：</div>
                    <div class="content-td"><%= book.favorites.count %></div>
                </div>
                <div class="content-tr">
-                   <div class="content-td">コメント数</div>
+                   <div class="content-td">コメント数：</div>
                    <div class="content-td">
                        <%= link_to book_path(book) do %>
                          <%= render "book_comments/count", book: book %>
@@ -109,8 +109,8 @@
                </div>
                <div class="content-tr">
                    <% if @user.id == current_user.id %>
-                      <div class="content-td"><%= link_to "編集", edit_book_path(book), class:"btn btn-success" %></div>
-                      <div class="content-td"> <%= link_to "削除", book_path(book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %></div>
+                      <div class="content-td"><%= link_to "編集", edit_book_path(book), class:"btn btn-success btn-sm" %></div>
+                      <div class="content-td"> <%= link_to "削除", book_path(book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger btn-sm" %></div>
                   <% end %>
                </div>
              </div>
