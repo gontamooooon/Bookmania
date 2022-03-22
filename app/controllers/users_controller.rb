@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:update]
 
   def index
-    @users = User.all
+    @users = User.page(params[:page])
   end
 
   def show
@@ -13,9 +13,9 @@ class UsersController < ApplicationController
     elsif params[:sort] == "posting_order"
       @books = @user.books.page(params[:page]).order(created_at: :asc)
     elsif params[:sort] == "highly_rated"
-      @books = Book.page(params[:page]).order(rate: :desc)
+      @books = @user.books.page(params[:page]).order(rate: :desc)
     elsif params[:sort] == "low_rating"
-      @books = Book.page(params[:page]).order(rate: :asc)
+      @books = @user.books.page(params[:page]).order(rate: :asc)
     else
       @books = @user.books.page(params[:page]).order(created_at: :desc)
     end

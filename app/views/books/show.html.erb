@@ -4,11 +4,7 @@
   		<h3><%= @book.title %></h3>
   		<table class='table'>
   		  <tr>
-          <td><%= link_to(@book.user) do %>
-            <%= image_tag @book.user.get_profile_image,size:"50x50" %><br>
-            <%= @book.user.name %>
-            <% end %>
-          </td>
+  		    <td><%= image_tag @book.get_book_image,size:"50x50" %></td>
           <td>説明：<%= @book.body %></td>
 
           <!--コメント数-->

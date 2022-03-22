@@ -10,7 +10,7 @@
         <% if user_signed_in? %>
           <li>
             <%=  link_to users_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-users"></i> つながる
+              <i class="fas fa-users"></i> レビュアー
             <% end %>
           </li>
           <li>
@@ -44,5 +44,7 @@
       </div>
     </div>
   </nav>
+  <div class="justify-content-center">
   <%= render "searches/search" %>
+  </div>
 </header>

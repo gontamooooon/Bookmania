@@ -1,48 +1,65 @@
-<%= form_with model: @book, url: books_path, method: :post, local: true do |f| %>
-<%= render 'layouts/error', model: @book %>
-  <div class="form-group">
-    <%= f.label :タイトル %>
-    <%= f.text_field :title, class: 'form-control book_title' %>
+<div class="container form-visual">
+  <div class="row justify-content-center">
+    <h3 class="p-5"><span class="header">新規レビュー投稿</span></h3>
   </div>
-  <div class="form-group">
-    <%= f.label :著者 %>
-    <%= f.text_field :author, class: 'form-control book_author' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :ジャンル %>
-    <%= f.select :genre, options_for_select([["選択して下さい"], ["文芸"], ["実用書"],  ["ビジネス書"], ["絵本・児童書"],["学習参考書"],["専門書"],["コミック、雑誌"]]) %>
-  </div>
-  <div class="form-group">
-    <%= f.label :説明 %>
-    <%= f.text_area :body, class: 'form-control book_body' %>
-  </div>
+  <%= form_with model: @book, url: books_path, method: :post, local: true do |f| %>
+    <%= render 'layouts/error', model: @book %>
+    <form>
+      <div class="form-group row justify-content-center">
+        <%= f.label :タイトル, class:"col-2 col-form-label" %>
+        <div class="col-5">
+          <%= f.text_field :title, class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group row justify-content-center">
+        <%= f.label :著者, class:"col-2 col-form-label" %>
+        <div class="col-5">
+          <%= f.text_field :author, class: 'form-control book_author' %>
+        </div>
+      </div>
+      <div class="form-group row justify-content-center">
+        <%= f.label :ジャンル, class:"col-2 col-form-label" %>
+        <div class="col-5 mt-1">
+          <%= f.select :genre, options_for_select([["選択して下さい"], ["文芸"], ["実用書"],  ["ビジネス書"], ["絵本・児童書"],["学習参考書"],["専門書"],["コミック、雑誌"]]), class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group row justify-content-center ">
+        <%= f.label :説明, class:"col-2 col-form-label" %>
+        <div class="col-5">
+          <%= f.text_area :body, class: 'form-control book_body' %>
+        </div>
+      </div>
 
-  <!--評価-->
-  <% if @book.id === nil %>
-    <div class="form-group" id="star">
-      <%= f.label :評価 %>
-      <%= f.hidden_field :rate, id: :review_star, class:'form-control' %>
-    </div>
+      <!--評価-->
+      <% if @book.id === nil %>
+        <div class="form-group row justify-content-center">
+          <%= f.label :評価, class:"col-2 col-form-label" %>
+          <div class="col-5 mt-2" id="star">
+            <%= f.hidden_field :rate, id: :review_star, class:'form-control' %>
+          </div>
+        </div>
 
-    <!--評価javascript-->
-    <script>
-    $(document).on('turbolinks:load', function() {
-      $('#star').empty();
-      $('#star').raty({
-        size     : 36,
-        starOff:  '<%= asset_path('star-off.png') %>',
-        starOn : '<%= asset_path('star-on.png') %>',
-        starHalf: '<%= asset_path('star-half.png') %>',
-        scoreName: 'book[rate]',
-        half: true,
-      });
-    })
-    </script>
-  <% else %>
-    <%= render "static_rate", book: @book %>
+        <!--評価javascript-->
+        <script>
+        $(document).on('turbolinks:load', function() {
+          $('#star').empty();
+          $('#star').raty({
+            size     : 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            scoreName: 'book[rate]',
+            half: true,
+          });
+        })
+        </script>
+      <% else %>
+       <%= render "static_rate", book: @book %>
+      <% end %>
+
+      <div class="form-group row justify-content-center">
+        <%= f.submit '新規レビュー投稿', class:'btn btn-success col-2' %>
+      </div>
+    </form>
   <% end %>
-
-  <div class="form-group">
-    <%= f.submit '新規レビュー投稿', class: 'btn btn-success' %>
-  </div>
-<% end %>
+</div>

@@ -1,1 +1,12 @@
-<h1>Bookマニア</h1>
+<h3>いいね！されている本のランキング</h3>
+<!--ランキング表示-->
+<% @all_ranks.each.with_index(1) do |book,i| %>
+ <div>第<%= i %>位</div>
+ <div>
+   <%= link_to book_path(book) do %>
+     <%= image_tag book.get_book_image, size:'50x50' %>
+   <% end %>
+ </div>
+ <div>タイトル：<%= book.title %></div>
+ <div>いいね数：<%= book.favorites.count %></div>
+<% end %>

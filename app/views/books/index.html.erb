@@ -1,3 +1,5 @@
+<div class="container">
+<div class="row">
 <table class='table table-hover table-inverse'>
   <!--ソート機能-->
   <span><%= link_to "新着順",books_path(sort: "new_arrival_order"), class: "btn btn-sm btn-link" %></span>
@@ -16,15 +18,16 @@
       <th>説明</th>
       <th>評価</th>
       <th>コメント件数</th>
+      <th>いいね</th>
+      <th>レビュアー</th>
     </tr>
   </thead>
   <tbody>
     <% @books.each do |book| %>
       <tr>
         <td>
-          <%= link_to user_path(book.user) do %>
-            <%= image_tag book.user.get_profile_image, size:'50x50' %><br>
-            <%= book.user.name %>
+          <%= link_to book_path(book) do %>
+            <%= image_tag book.get_book_image, size:'80x90' %><br>
           <% end %>
         </td>
         <td><%= link_to book.title, book_path(book) %></td>
@@ -40,9 +43,15 @@
         <td id="favorite_buttons_<%= book.id %>">
           <%= render "favorites/favorite-btn", book: book %>
         </td>
+        <td>
+          <%= link_to user_path(book.user) do %>
+            <%= image_tag book.user.get_profile_image, size:'30x30' %><br>
+            <%= book.user.name %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<!--ページネーション-->
-<div class="d-flex justify-content-center"><%= paginate @books %></div>
+</div>
+</div>
