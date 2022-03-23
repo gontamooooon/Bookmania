@@ -3,6 +3,13 @@ class UsersController < ApplicationController
 
   def index
     @users = User.page(params[:page])
+    if params[:sort] == "new_arrival_order"
+      @users = User.page(params[:page]).order(created_at: :desc)
+    elsif params[:sort] == "posting_order"
+      @users = User.page(params[:page]).order(created_at: :asc)
+    else
+      @users = User.page(params[:page]).order(created_at: :desc)
+    end
   end
 
   def show

@@ -1,73 +1,77 @@
 <div class="container main-visual">
   <div class="row justify-content-center">
-    <h3 class="p-3"><span class="header "><%= @user.name %>さんのプロフィール</span></h3>
+    <h3 class="p-3"><span class="header"><%= @user.name %>さんのプロフィール</span></h3>
   </div>
-  <div class="row">
-    <div class="col-md-3 offset-2">
-       <div class="primary-content">
-           <div class="secondary-title">マイプロフィール</div>
-           <div class="common-btn">
-               <% if current_user != @user %>
-               <!--フォローボタンor編集ボタン-->
-                 <%= render "relationships/form", user: @user%>
-               <% else %>
-                 <%= link_to "編集する",edit_user_path(@user), class:"btn btn-success btn-sm" %>
-               <% end %>
+  <div class="row justify-content-center">
+      <div class="col-md-12">
+           <div class="primary-content justify-content-center">
+               <div class="secondary-title">マイプロフィール</div>
+               <div class="common-btn">
+                   <% if current_user != @user %>
+                   <!--フォローボタンor編集ボタン-->
+                     <%= render "relationships/form", user: @user%>
+                   <% else %>
+                     <%= link_to "編集する",edit_user_path(@user), class:"btn btn-outline-success btn-sm" %>
+                   <% end %>
+               </div>
+           </div>
+           <div class="main-content justify-content-center" style="margin-top: 20px;">
+               <div class="content">
+                   <div class="content-img"><%= image_tag @user.get_profile_image, size:'70x70' %></div>
+               </div>
+               <div class="content">
+                   <div class="content-tr">
+                       <div class="content-td">名前：</div>
+                       <div class="content-td"><%= @user.name %></div>
+                   </div>
+                   <div class="content-tr">
+                       <div class="content-td">自己紹介：</div>
+                       <div class="content-td"><%= @user.introduction %></div>
+                   </div>
+                   <div class="content-tr">
+                       <div class="content-td">フォロー数：</div>
+                       <div class="content-td"><%= link_to @user.followings.count, user_followings_path(@user) %></div>
+                   </div>
+                   <div class="content-tr">
+                       <div class="content-td">フォロワー数：</div>
+                       <div class="content-td"><%= link_to @user.followers.count, user_followers_path(@user) %></div>
+                   </div>
+               </div>
            </div>
        </div>
-       <div class="main-content">
-           <div class="content">
-               <div class="content-img"><%= image_tag @user.get_profile_image, size:'50x50' %></div>
-           </div>
-           <div class="content">
-               <div class="content-tr">
-                   <div class="content-td">名前：</div>
-                   <div class="content-td"><%= @user.name %></div>
-               </div>
-               <div class="content-tr">
-                   <div class="content-td">自己紹介：</div>
-                   <div class="content-td"><%= @user.introduction %></div>
-               </div>
-               <div class="content-tr">
-                   <div class="content-td">フォロー数：</div>
-                   <div class="content-td"><%= link_to @user.followings.count, user_followings_path(@user) %></div>
-               </div>
-               <div class="content-tr">
-                   <div class="content-td">フォロワー数：</div>
-                   <div class="content-td"><%= link_to @user.followers.count, user_followers_path(@user) %></div>
-               </div>
-           </div>
-       </div>
-    </div>
-    <div class="col-md-7">
-       <div class="primary-content">
+  </div>
+  <div class="row" style="margin-top: 20px;">
+    <div class="col-md-12">
+       <div class="primary-content justify-content-center">
            <div class="secondary-title">マイ読書レビュー</div>
            <div class="common-btn">
                <% if current_user != @user %>
                <% else %>
-                 <%= link_to "本の新規レビュー作成",new_book_path, class:"btn btn-primary btn-sm" %>
+                 <%= link_to "本の新規レビュー作成",new_book_path, class:"btn btn-outline-primary btn-sm" %>
                <% end %>
            </div>
             <!--ソート機能-->
-            <div class="sort-btn">
+            <div class="sort-btn ml-2">
                <span><%= link_to "新着順",user_path(sort: "new_arrival_order"), class: "btn btn-sm btn-link" %></span>
                <span>|</span>
                <span><%= link_to "投稿順",user_path(sort: "posting_order"), class: "btn btn-sm btn-link" %></span>
                <span>|</span>
                <span><%= link_to "高評価順",user_path(sort: "highly_rated"), class: "btn btn-sm btn-link" %></span>
                <span>|</span>
-               <span><%= link_to "低評価順",user_path(sort: "low_rating"), class: "btn btn-sm btn-link"  %></span>
+               <span><%= link_to "低評価順",user_path(sort: "low_rating"), class: "btn btn-sm btn-link" %></span>
             </div>
        </div>
-       <div class="main-content1">
+       <div class="main-content-1 justify-content-center" style="margin-top: 20px;">
          <% @books.each do |book| %>
             <div class="content">
                <div class="content-img">
-                  <% if book.book_image.attached? %>
-                    <%= image_tag book.book_image, size:"50x50" %>
-                  <% else %>
-                    <%= image_tag 'no_image', size:"50x50" %>
-                  <% end %>
+                 <%= link_to book_path(book) do %>
+                    <% if book.book_image.attached? %>
+                      <%= image_tag book.book_image, size:"70x70" %>
+                    <% else %>
+                      <%= image_tag 'no_image', size:"70x70" %>
+                    <% end %>
+                 <% end %>
                </div>
             </div>
             <div class="content">
@@ -109,8 +113,8 @@
                </div>
                <div class="content-tr">
                    <% if @user.id == current_user.id %>
-                      <div class="content-td"><%= link_to "編集", edit_book_path(book), class:"btn btn-success btn-sm" %></div>
-                      <div class="content-td"> <%= link_to "削除", book_path(book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger btn-sm" %></div>
+                      <div class="content-td"><%= link_to "編集", edit_book_path(book), class:"btn btn-outline-success btn-sm" %></div>
+                      <div class="content-td"> <%= link_to "削除", book_path(book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-outline-danger btn-sm" %></div>
                   <% end %>
                </div>
              </div>

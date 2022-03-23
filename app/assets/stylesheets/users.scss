@@ -7,12 +7,12 @@
 }
 
 .main-visual{
-  background-color: #ffe9a9;
+  background-color: #eaffff;
 }
 
 .heading{
   padding: 0px 5px;
-  background-color: black;
+  background-color: #797979;
   color: white;
   font-weight: 800;
   border-radius: 10px;
@@ -21,9 +21,11 @@
 .primary-content{
   display: flex;
 }
+
 .secondary-title{
-  background-color: white;
-  color: black;
+  background-color: #1effff;
+  font-weight: 800;
+  color: #242424;
   padding: 3px 0;
 }
 
@@ -34,9 +36,9 @@
 .main-content{
   display: flex;
 }
-
-.main-content1{
-  flex-direction: column;
+.main-content-1{
+  display: flex;
+  border-bottom: 2px dashed #8c8b8b;
 }
 
 .content-tr{
@@ -44,6 +46,29 @@
 }
 .content-td{
   margin: 10px;
+}
+
+// users/indexのview
+.table{
+  background-color: white;
+  height: auto;
+  width: 600px;
+  padding: 20px;
+}
+
+.table-tr{
+  height: auto;
+  display: flex;
+}
+
+.table-td-index{
+  height: auto;
+  width: 20%;
+}
+
+.table-td{
+  height: auto;
+  width: auto;
 }
 
 .tmp-table-tr {
