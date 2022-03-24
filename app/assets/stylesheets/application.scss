@@ -20,12 +20,12 @@
 
 .Notification {
  .notice {
-   background-color: lime;
+   background-color: #ffd700;
    color: white;
    text-align: center;
  }
  .alert {
-   background-color: red;
+   background-color: #ff6347;
    color: white;
    text-align: center;
  }
@@ -62,9 +62,4 @@
  background-color: #808000;
  font-weight: 800;
  color: #fffafa;
-}
-
-.index{
- background-color: #bcffff;
- font-weight: 800;
 }
