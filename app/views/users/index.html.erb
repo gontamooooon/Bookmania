@@ -11,7 +11,7 @@
    <% @users.each do |user| %>
       <div class="row justify-content-center">
         <div class="col-1 offset-1 user-img mr-5">
-          <%= link_to user_path(user) do %>
+          <%= link_to user_path(user) , class:"shadow-lg" do %>
            <%= image_tag user.get_profile_image, size: "120x130" %>
           <% end %>
         </div>

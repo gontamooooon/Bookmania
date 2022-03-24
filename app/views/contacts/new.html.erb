@@ -1,29 +1,32 @@
-<h3>【お問い合わせフォーム】</h3>
-
-
-<%= form_with(model: @contact, local: true) do |f| %>
+<div class="container main-visual">
+  <div class="row justify-content-center">
+    <h3 class="p-3"><span class="header">お問い合わせフォーム</span></h3>
+  </div>
+  
+  <%= form_with(model: @contact, local: true) do |f| %>
   <%= render "layouts/error", model: @contact %>
-  <div class="form-group">
-    <%= f.label :お名前 %>
-    <span class="badge badge-danger">必須</span>
-    <%= f.text_field :name, autofocus: true, placeholder:"例) 田中太郎", class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :電話番号 %>
-    <span class="badge badge-danger">必須</span>
-    <%= f.text_field :phone_number, autofocus: true, placeholder:"ハイフンなし", class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :メールアドレス %>
-    <span class="badge badge-danger">必須</span>
-    <%= f.email_field :email, autofocus: true, placeholder:"PC・携帯どちらでも可", class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :お問い合わせ内容 %>
-    <span class="badge badge-danger">必須</span>
-    <%= f.text_area :message, size: '5x5', placeholder: "お問い合わせはこちらへ", class: 'form-control' %>
-  </div>
-  <div>
-    <%= f.submit '送信', class:"btn btn-success" %>
-  </div>
-<% end %>
+    <div class="form-group">
+      <%= f.label :お名前 %>
+      <span class="badge badge-danger">必須</span>
+      <%= f.text_field :name, autofocus: true, placeholder:"例) 田中太郎", class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :電話番号 %>
+      <span class="badge badge-danger">必須</span>
+      <%= f.text_field :phone_number, autofocus: true, placeholder:"ハイフンなし", class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :メールアドレス %>
+      <span class="badge badge-danger">必須</span>
+      <%= f.email_field :email, autofocus: true, placeholder:"PC・携帯どちらでも可", class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :お問い合わせ内容 %>
+      <span class="badge badge-danger">必須</span>
+      <%= f.text_area :message, size: '5x5', placeholder: "お問い合わせはこちらへ", class: 'form-control' %>
+    </div>
+    <div>
+      <%= f.submit '送信', class:"btn btn-success col-1" %>
+    </div>
+  <% end %>
+</div>

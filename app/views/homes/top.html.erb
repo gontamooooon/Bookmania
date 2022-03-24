@@ -1,12 +1,26 @@
-<h3>いいね！されている本のランキング</h3>
-<!--ランキング表示-->
-<% @all_ranks.each.with_index(1) do |book,i| %>
- <div>第<%= i %>位</div>
- <div>
-   <%= link_to book_path(book) do %>
-     <%= image_tag book.get_book_image, size:'50x50' %>
+<div class="container main-visual">
+   <div class="row justify-content-center">
+    <h3 class="p-3"><span class="header">いいね！されている本のランキング</span></h3>
+   </div>
+
+   <!--ランキング表示-->
+   <% @all_ranks.each.with_index(1) do |book,i| %>
+      <div class="row mb-3">
+        <div class="col-md-1 offset-2 d-flex align-items-center">
+          <div class="ranking"><strong>第<%= i %>位</strong></div>
+        </div>
+        <div class="col-md-2">
+         <%= link_to book_path(book) do %>
+           <%= image_tag book.get_book_image, size:'100x100' %>
+         <% end %>
+        </div>
+        <div class="col-md-7 d-flex align-items-center">
+          <p>
+            <strong><%= link_to book.title, book_path(book) ,class:"text-dark" %></strong></br>
+            <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i><strong><%= book.favorites.count %></strong></br>
+            <i class="fas fa-comments"></i><strong><%= book.book_comments.count %></strong>
+          </p>
+        </div>
+      </div>
    <% end %>
- </div>
- <div>タイトル：<%= book.title %></div>
- <div>いいね数：<%= book.favorites.count %></div>
-<% end %>
+</div>

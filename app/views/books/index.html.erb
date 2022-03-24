@@ -18,8 +18,8 @@
         <th></th>
         <th>タイトル</th>
         <th>著者</th>
-        <th>評価</th>
-        <th>いいね</th>
+        <th></th>
+        <th></th>
         <th>レビュアー</th>
       </tr>
     </thead>
@@ -42,7 +42,7 @@
           <td>
             <%= link_to user_path(book.user), class:"text-dark" do %>
               <%= image_tag book.user.get_profile_image, size:'50x50' %><br>
-              <%= book.user.name %>
+              <i class="fa fa-user"></i><%= book.user.name %>
             <% end %>
           </td>
         </tr>
