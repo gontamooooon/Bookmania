@@ -2,12 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.background-img{
-  background-image: image-url("washi.jpg");
-}
-
-.main-visual{
-  background-color: #eaffff;
+.sub-title{
+  background-color: #bdb76b;
+  font-weight: 800;
+  color: #fffafa;
+  padding: 3px 0;
 }
 
 .heading{
@@ -22,31 +21,7 @@
   display: flex;
 }
 
-.secondary-title{
-  background-color: #1effff;
-  font-weight: 800;
-  color: #242424;
-  padding: 3px 0;
-}
 
-.content-img{
-  margin: 20px;
-}
-
-.main-content{
-  display: flex;
-}
-.main-content-1{
-  display: flex;
-  border-bottom: 2px dashed #8c8b8b;
-}
-
-.content-tr{
-  display: flex;
-}
-.content-td{
-  margin: 10px;
-}
 
 // users/indexのview
 .table{
@@ -71,14 +46,3 @@
   width: auto;
 }
 
-.tmp-table-tr {
-  width: 80%;
-  height: 30%;
-  background-color: ivory;
-}
-
-.tmp-table-td {
-  width: 30%;
-  height: 100%;
-  background-color: red;
-}

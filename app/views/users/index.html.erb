@@ -1,78 +1,40 @@
 <div class="container main-visual">
-   <div class="row justify-content-center">
-    <h3 class="p-3"><span class="header">レビュアー</span></h3>
-   </div>
+  <div class="row justify-content-center">
+    <h3 class="p-5"><span class="header">レビュアー一覧</span></h3>
+  </div>
    <!--ソート機能-->
-   <div class="sort-btn text-right">
-     <span><%= link_to "昇順",users_path(sort: "new_arrival_order"), class: "btn btn-sm btn-link" %></span>
-     <span>|</span>
-     <span><%= link_to "降順",users_path(sort: "posting_order"), class: "btn btn-sm btn-link" %></span>
-   </div>
-   <% @users.each do |user| %>
-      <div class="row justify-content-center">
-        <div class="col-1 offset-1 user-img mr-5">
-          <%= link_to user_path(user) , class:"shadow-lg" do %>
-           <%= image_tag user.get_profile_image, size: "120x130" %>
+  <div class="row">
+    <div class="col-md-12 text-right">
+       <span><%= link_to "昇順",users_path(sort: "new_arrival_order"), class: "btn btn-sm btn-link" %></span>
+       <span>|</span>
+       <span><%= link_to "降順",users_path(sort: "posting_order"), class: "btn btn-sm btn-link" %></span>
+    </div>
+  </div>
+  <div class="row">
+     <% @users.each do |user| %>
+        <div class="col-md-2 offset-3 my-5">
+          <%= link_to user_path(user) do %>
+            <%= image_tag user.get_profile_image, size: "120x140", class:"shadow-lg" %>
           <% end %>
         </div>
-        <div class="col-7">
-          <div class="table">
-            <div class="table-tr">
-              <div class="table-td-index"><span class="heading">表示名</span></div>
-              <div class="table-td"><%= user.name %></div>
-            </div>
-            <div class="table-tr">
-              <div class="table-td-index"><span class="heading">自己紹介</span></div>
-              <div class="table-td"><%= user.introduction %></div>
-            </div>
-            <div class="table-tr">
-              <div class="table-td-index"><span class="heading">レビュー</span></div>
-              <div class="table-td">
+        <div class="col-md-7 my-5">
+          <ul>
+            <li class="mb-3 list-unstyled"><i class="fas fa-user"></i><strong>表示名：<%= user.name %></strong></li>
+            <li class="mb-3 list-unstyled"><strong>自己紹介：<%= user.introduction %></strong></li>
+            <li class="mb-3 list-unstyled">
+              <strong>
+                レビュー：
                 <%= link_to user_path(user) do %>
                   公開<%= user.books.count %>件
                 <% end %>
-              </div>
-            </div>
-            <div class="table-tr">
-              <div class="table-td-index"><span class="heading">フォロー数</span></div>
-              <div class="table-td"><%= link_to user.followings.count, user_followings_path(user) %></div>
-            </div>
-            <div class="table-tr">
-              <div class="table-td-index"><span class="heading">フォロワー数</span></div>
-              <div class="table-td"><%= link_to user.followers.count, user_followers_path(user) %></div>
-            </div>
-            <!--<div class="table-tr">-->
-            <!--  <div class="table-td-index"><span class="heading">コメント数</span></div>-->
-            <!--  <div class="table-td"><%#= link_to user.receive_comment_count, user_path(user) %></div>-->
-            <!--</div>-->
-          </div>
+              </strong>
+            </li>
+            <li class="mb-3 list-unstyled"><strong>フォロー：<%= link_to user.followings.count, user_followings_path(user) %></strong></li>
+            <li class="mb-3 list-unstyled"><strong>フォロワー：<%= link_to user.followers.count, user_followers_path(user) %></strong></li>
+            <li class="mb-3 list-unstyled"><%= link_to "詳細ページへ" ,user_path(user), class:"btn btn-outline-secondary btn-sm"%></li>
+          </ul>
         </div>
-      </div>
-  <% end %>
-  <!--ページネーション-->
-  <div class="d-flex justify-content-center"><%= paginate @users %></div>
+     <% end %>
+  </div>
+  <div class="d-flex justify-content-center mt-3"><%= paginate @users %></div>
 </div>
-
-    <!--    <div class="tmp-table" style="height: 500px;width: 450px;">-->
-    <!--    <div class="d-flex justify-content-between tmp-table-tr" style="">-->
-    <!--      <div class="tmp-table-td"></div>-->
-    <!--      <div class="tmp-table-td"></div>-->
-    <!--      <div class="tmp-table-td"></div>-->
-    <!--      <div class="tmp-table-td"></div>-->
-    <!--      <div class="tmp-table-td"></div>-->
-    <!--      <div class="tmp-table-td"></div>-->
-    <!--      <div class="tmp-table-td"></div>-->
-    <!--    </div>-->
-    <!--    <div class="d-flex justify-content-between tmp-table-tr">-->
-    <!--      <div class="tmp-table-td"></div>-->
-    <!--      <div class="tmp-table-td"></div>-->
-    <!--      <div class="tmp-table-td"></div>-->
-    <!--    </div>-->
-    <!--    <div class="d-flex justify-content-between tmp-table-tr">-->
-    <!--      <div class="tmp-table-td"></div>-->
-    <!--      <div class="tmp-table-td"></div>-->
-    <!--      <div class="tmp-table-td"></div>-->
-    <!--    </div>-->
-    <!--  </div>-->
-    <!--</div>-->
-    <!--</div>-->

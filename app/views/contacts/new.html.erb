@@ -6,22 +6,22 @@
   <%= form_with(model: @contact, local: true) do |f| %>
   <%= render "layouts/error", model: @contact %>
     <div class="form-group">
-      <%= f.label :お名前 %>
+      <i class="fas fa-user"></i><%= f.label :お名前 %>
       <span class="badge badge-danger">必須</span>
       <%= f.text_field :name, autofocus: true, placeholder:"例) 田中太郎", class: 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :電話番号 %>
+      <i class="fas fa-phone"></i><%= f.label :電話番号 %>
       <span class="badge badge-danger">必須</span>
       <%= f.text_field :phone_number, autofocus: true, placeholder:"ハイフンなし", class: 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :メールアドレス %>
+      <i class="fas fa-address-card"></i><%= f.label :メールアドレス %>
       <span class="badge badge-danger">必須</span>
       <%= f.email_field :email, autofocus: true, placeholder:"PC・携帯どちらでも可", class: 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.label :お問い合わせ内容 %>
+      <i class="fas fa-comment"></i><%= f.label :お問い合わせ内容 %>
       <span class="badge badge-danger">必須</span>
       <%= f.text_area :message, size: '5x5', placeholder: "お問い合わせはこちらへ", class: 'form-control' %>
     </div>
