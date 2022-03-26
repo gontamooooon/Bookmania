@@ -7,12 +7,18 @@
            <h5><span class="sub-title">■■■プロフィール■■■</span></h5>
         </div>
         <div class="col-md-12 mt-3">
-           <% if current_user != @user %>
-           <!--フォローボタンor編集ボタン-->
-             <%= render "relationships/form", user: @user%>
-           <% else %>
-             <%= link_to "編集する",edit_user_path(@user), class:"btn btn-outline-success" %>
-           <% end %>
+          <p>
+            <% if current_user != @user %>
+            <!--フォローボタンor編集ボタン-->
+              <%= render "relationships/form", user: @user%>
+            <% else %>
+              <%= link_to "編集する",edit_user_path(@user), class:"btn btn-outline-success btn-sm" %>
+            <% end %>
+            <!-- current_userと@userが一致していない場合に`チャット`を表示 -->
+            <% if current_user != @user %>
+              <%= link_to 'チャット', chat_path(@user.id), class:"btn btn-outline-primary btn-sm" %>
+            <% end %>
+          </p>
         </div>
     </div>
     <div class="row">
@@ -54,7 +60,7 @@
         </div>
     </div>
 
-    
+
     <% @books.each do |book| %>
     <div class="row border-top">
       <div class="col-md-2 offset-3 mt-5">

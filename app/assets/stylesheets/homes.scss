@@ -5,8 +5,9 @@
 @import "skippr";
 
 #container{
-  height: 500px;
-  margin: 0 100px;
+  height: 600px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
 }
 #theTarget{
   border: double 10px #800000;

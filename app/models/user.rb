@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy
   has_many :book_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :user_rooms, dependent: :destroy
+  has_many :chats, dependent: :destroy
 
   # フォローをした、されたの関係
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -19,13 +21,14 @@ class User < ApplicationRecord
   validates :introduction, length: { maximum: 100 }
 
   # Users/index画面にてコメント数の表示
-  def receive_comment_count
-    count = 0
-    books.each do |book|
-      count += book.book_comments.count
-    end
-    count
-  end
+  # <%= link_to user.receive_comment_count, user_path(user) %>
+  # def receive_comment_count
+  #   count = 0
+  #   books.each do |book|
+  #     count += book.book_comments.count
+  #   end
+  #   count
+  # end
 
   def get_profile_image
     profile_image.attached? ? profile_image : 'no_image.jpg'
