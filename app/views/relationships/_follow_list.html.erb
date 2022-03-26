@@ -1,17 +1,30 @@
 <% if users.exists? %>
-  <table class="table table table-hover">
-   <tbody class="tbody">
-     <% users.each do |user| %>
-    <tr>
-      <td><%= image_tag user.get_profile_image,size:"50x50" %></td>
-      <td><i class="fas fa-user"></i><%= user.name %></td>
-      <td>フォロー数: <%= user.followings.count %></td>
-      <td>フォロワー数: <%= user.followers.count %></td>
-      <td><%= link_to "詳細ページ", user_path(user), class:"btn btn-outline-info btn-sm" %></td>
-    </tr>
-    <% end %>
-    </tbody>
-  </table>
+  <% users.each do |user| %>
+  <div class="row border-top">
+      <div class="col-md-2 offset-3 my-5">
+        <%= link_to user_path(user) do %>
+          <%= image_tag user.get_profile_image, size: "120x140", class:"shadow-lg" %>
+        <% end %>
+      </div>
+      <div class="col-md-7 my-5">
+        <p><strong><i class="fas fa-user"></i>   <%= user.name %></strong></p>
+        <p><strong>
+            レビュー：
+            <%= link_to user_path(user) do %>
+              公開<%= user.books.count %>件
+            <% end %>
+          </strong>
+        </p>
+        <p><strong>フォロー数:   <%= user.followings.count %></strong></p>
+        <p><strong>フォロワー数:   <%= user.followers.count %></strong></p>
+        <p><%= link_to "詳細ページへ", user_path(user), class:"btn btn-outline-info btn-sm" %></p>
+      </div>
+  </div>
+  <% end %>
 <% else %>
-  <p>ユーザーはいません</p>
+  <div class="row text-center mb-5">
+    <div class="col-md-12">
+      <h4><strong>ユーザーはいません</strong></h4>
+    </div>
+  </div>
 <% end %>

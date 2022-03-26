@@ -1,6 +1,6 @@
 <div class="container main-visual">
   <div class="row justify-content-center">
-    <h3 class="p-5"><span class="header">～<%= @book.title %>～</span></h3>
+    <h3 class="p-5"><span class="header">■■■   <%= @book.title %>   ■■■</span></h3>
   </div>
   <div class="row">
 	 <div class="col-md-3 offset-1 mt-3">
@@ -17,7 +17,7 @@
             <%= render "favorites/favorite-btn", book: @book %>
          </div>
          <div class="col-md-12 mt-3">
-           <i class="fas fa-comments"></i><%= render "book_comments/count", book: @book %>
+           <i class="fas fa-comments"></i>   <%= render "book_comments/count", book: @book %>
          </div>
          <div class="col-md-12 mt-3">
             <% if @book.user_id == current_user.id %>

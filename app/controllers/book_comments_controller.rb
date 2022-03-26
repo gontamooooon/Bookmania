@@ -1,5 +1,4 @@
 class BookCommentsController < ApplicationController
-
   def create
     book = Book.find(params[:book_id])
     comment = BookComment.new(book_comment_params)
@@ -16,11 +15,10 @@ class BookCommentsController < ApplicationController
     BookComment.find(params[:id]).destroy
     redirect_to request.referer, notice: "コメントを削除しました"
   end
-  
+
   private
-  
+
   def book_comment_params
     params.require(:book_comment).permit(:comment)
   end
-
 end

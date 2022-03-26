@@ -1,26 +1,67 @@
-<div class="container main-visual">
+<div id="container">
+    <div id="theTarget">
+        <div class="book_shelf_2"></div>
+        <div class="books"></div>
+        <div class="kosho"></div>
+        <div class="book_shelf_1"></div>
+        <div class="yousho"></div>
+    </div>
+</div>
+
+<div class="container">
    <div class="row justify-content-center">
-    <h3 class="p-5"><span class="header">いいね！されている本のランキング</span></h3>
+    <h3 class="p-5"><span class="header"><i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>いいねランキング</span></h3>
    </div>
 
    <!--ランキング表示-->
+   <div class="row text-center">
    <% @all_ranks.each.with_index(1) do |book,i| %>
-      <div class="row mb-3">
-        <div class="col-md-1 offset-2 d-flex align-items-center">
-          <div class="ranking"><strong>第<%= i %>位</strong></div>
+      <div class="col-md-4">
+        <div class="row mb-4">
+          <div class="col-md-12 ranking-number">
+            <i class="fas fa-trophy fontawesome-color fa-xs"></i><strong>第<%= i %>位</strong><i class="fas fa-trophy fontawesome-color fa-xs"></i>
+          </div>
         </div>
-        <div class="col-md-2">
-         <%= link_to book_path(book) do %>
-           <%= image_tag book.get_book_image, size:'100x100' %>
-         <% end %>
+        <div class="row mb-2">
+          <div class="col-md-12">
+            <p>
+              <%= link_to book_path(book) do %>
+                <%= image_tag book.get_book_image, size:'200x200' %>
+              <% end %>
+            </p>
+          </div>
         </div>
-        <div class="col-md-7 d-flex align-items-center">
-          <p>
-            <strong><%= link_to book.title, book_path(book) ,class:"text-dark" %></strong></br>
-            <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i><strong><%= book.favorites.count %></strong></br>
-            <i class="fas fa-comments"></i><strong><%= book.book_comments.count %></strong>
-          </p>
+        <div class="row mb-2">
+          <div class="col-md-12">
+            <p><strong><i class="fas fa-book"></i>   <%= book.title %></strong></p>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-md-12">
+            <p><i class="fas fa-user"></i><strong>   <%= book.author %></strong></li></p>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-md-12">
+            <p><%= render "books/static_rate", book: book %></p>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-md-12">
+            <p><i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>   <%= book.favorites.count %></p>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-md-12">
+            <p>
+              <i class="fas fa-comments"></i>
+              <%= link_to book_path(book) do %>
+                 <%= render "book_comments/count", book: book %>
+              <% end %>
+            </p>
+          </div>
         </div>
       </div>
-   <% end %>
+      <% end %>
+    </div>
 </div>

@@ -4,37 +4,38 @@
   </div>
    <!--ソート機能-->
   <div class="row">
-    <div class="col-md-12 text-right">
+    <div class="col-md-12 text-right mb-3">
        <span><%= link_to "昇順",users_path(sort: "new_arrival_order"), class: "btn btn-sm btn-link" %></span>
        <span>|</span>
        <span><%= link_to "降順",users_path(sort: "posting_order"), class: "btn btn-sm btn-link" %></span>
     </div>
   </div>
-  <div class="row">
-     <% @users.each do |user| %>
-        <div class="col-md-2 offset-3 my-5">
-          <%= link_to user_path(user) do %>
-            <%= image_tag user.get_profile_image, size: "120x140", class:"shadow-lg" %>
-          <% end %>
-        </div>
-        <div class="col-md-7 my-5">
-          <ul>
-            <li class="mb-3 list-unstyled"><i class="fas fa-user"></i><strong>表示名：<%= user.name %></strong></li>
-            <li class="mb-3 list-unstyled"><strong>自己紹介：<%= user.introduction %></strong></li>
-            <li class="mb-3 list-unstyled">
-              <strong>
-                レビュー：
-                <%= link_to user_path(user) do %>
-                  公開<%= user.books.count %>件
-                <% end %>
-              </strong>
-            </li>
-            <li class="mb-3 list-unstyled"><strong>フォロー：<%= link_to user.followings.count, user_followings_path(user) %></strong></li>
-            <li class="mb-3 list-unstyled"><strong>フォロワー：<%= link_to user.followers.count, user_followers_path(user) %></strong></li>
-            <li class="mb-3 list-unstyled"><%= link_to "詳細ページへ" ,user_path(user), class:"btn btn-outline-secondary btn-sm"%></li>
-          </ul>
-        </div>
-     <% end %>
+ 
+  <% @users.each do |user| %>
+  <div class="row border-top">
+    <div class="col-md-2 offset-3 my-5">
+      <%= link_to user_path(user) do %>
+        <%= image_tag user.get_profile_image, size: "120x140", class:"shadow-lg" %>
+      <% end %>
+    </div>
+    <div class="col-md-7 my-5">
+      <ul>
+        <li class="mb-3 list-unstyled"><i class="fas fa-user"></i><strong>   <%= user.name %></strong></li>
+        <li class="mb-3 list-unstyled"><strong>自己紹介：<%= user.introduction %></strong></li>
+        <li class="mb-3 list-unstyled">
+          <strong>
+            レビュー：
+            <%= link_to user_path(user) do %>
+              公開<%= user.books.count %>件
+            <% end %>
+          </strong>
+        </li>
+        <li class="mb-3 list-unstyled"><strong>フォロー：<%= link_to user.followings.count, user_followings_path(user) %></strong></li>
+        <li class="mb-3 list-unstyled"><strong>フォロワー：<%= link_to user.followers.count, user_followers_path(user) %></strong></li>
+        <li class="mb-3 list-unstyled"><%= link_to "詳細ページへ" ,user_path(user), class:"btn btn-outline-secondary btn-sm"%></li>
+      </ul>
+    </div>
   </div>
+  <% end %>
   <div class="d-flex justify-content-center mt-3"><%= paginate @users %></div>
 </div>

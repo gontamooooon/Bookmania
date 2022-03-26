@@ -3,10 +3,10 @@
        <div class="row border-bottom border-top">
          <div class="col-md-4 mt-3">
             <%= link_to user_path(book_comment.user), class:"text-dark" do %>
-              <%= image_tag book_comment.user.get_profile_image,size:"50x50" %></br>
-              <i class="fas fa-user"></i><%= book_comment.user.name %></br>
+              <%= image_tag book_comment.user.get_profile_image,size:"70x70" %></br>
+              <i class="fas fa-user"></i>  <%= book_comment.user.name %></br>
             <% end %>
-            <i class="fas fa-calendar-day"></i><%= book_comment.created_at.strftime('%Y/%m/%d') %>
+            <i class="fas fa-calendar-day"></i>  <%= book_comment.created_at.strftime('%Y/%m/%d') %>
          </div>
          <div class="col-md-8 mt-3">
             <%= book_comment.comment %></br>

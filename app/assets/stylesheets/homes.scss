@@ -2,6 +2,33 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.ranking{
-  background-color: #ffff7f;
+@import "skippr";
+
+#container{
+  height: 500px;
+  margin: 0 100px;
+}
+#theTarget{
+  border: double 10px #800000;
+}
+.book_shelf_2{
+  background-image: image-url("book_shelf_2.jpg");
+}
+.books{
+  background-image: image-url("books.jpg");
+}
+.kosho{
+  background-image: image-url("kosho.jpg");
+}
+.book_shelf_1{
+  background-image: image-url("book_shelf_1.jpg");
+}
+.yousho{
+  background-image: image-url("yousho.jpg");
+}
+.ranking-number{
+  font-size: 25px;
+}
+.fontawesome-color{
+  color: #ffd700;
 }

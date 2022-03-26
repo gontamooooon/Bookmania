@@ -14,31 +14,31 @@
       <span><%= link_to "低評価順",books_path(sort: "low_rating"), class: "btn btn-sm btn-link"  %></span>
     </div>
   </div>
-  
+
     <% @books.each do |book| %>
-    <div class="card w-50 mx-auto mt-5 shadow-lg">
+    <div class="card mx-auto mt-5 shadow-lg" style="width:30rem;">
       <%= link_to book_path(book) do %>
-         <%= image_tag book.get_book_image, class:"card-img-top"; %>
+         <%= image_tag book.get_book_image,size:"300x400", class:"card-img-top"; %>
       <% end %>
       <div class="card-body">
         <div class="row">
           <div class="col-md-1 offset-1">
             <%= link_to user_path(book.user) do %>
-              <%= image_tag book.user.get_profile_image, size:'100x100', class:"mt-3 rounded-circle"%>
+              <%= image_tag book.user.get_profile_image, size:'120x120', class:"mt-3 rounded-circle" %>
             <% end %>
           </div>
-          <div class="col-md-8 offset-2">
+          <div class="col-md-7 offset-3">
             <p class="card-title">
               <%= link_to(book_path(book), class:"text-dark") do %>
                 <strong><i class="fas fa-book"></i><span> <%= book.title %></span></strong>
               <% end %>
             </p>
-            <p class="card-text"><i class="fas fa-user"></i><strong>著者：<%= book.author %></strong></p>
+            <p class="card-text"><i class="fas fa-pen"></i><strong><%= book.author %></strong></p>
             <p class="card-text"><%= render "static_rate", book: book %></p>
             <p class="card-text" id="favorite_buttons_<%= book.id %>">
               <%= render "favorites/favorite-btn", book: book %>
             </p>
-            <span><i class="fas fa-user"></i> By <%= book.user.name %> ｜ </span>
+            <span><i class="fas fa-user"></i>   <%= book.user.name %> ｜ </span>
             <span><%= link_to "#{book.book_comments.count} コメント", book_path(book), class:"text-dark" %></span>
           </div>
         </div>

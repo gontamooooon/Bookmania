@@ -9,7 +9,7 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to user_path(current_user), notice: "本の投稿ができました"
     else
-      render:new
+      render :new
     end
   end
 
@@ -48,7 +48,7 @@ class BooksController < ApplicationController
     if @book.update(book_params)
       redirect_to user_path(current_user), notice: "本のレビューを更新しました"
     else
-      render:edit
+      render :edit
     end
   end
 
@@ -59,9 +59,9 @@ class BooksController < ApplicationController
   end
 
   private
+
   # ストロングパラメータ
   def book_params
     params.require(:book).permit(:title, :body, :author, :genre, :book_image, :rate)
   end
-
 end
