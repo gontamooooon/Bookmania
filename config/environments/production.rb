@@ -117,9 +117,7 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-  config.hosts << "35.73.121.235"
-  config.active_job.queue_adapter = :inline
-  
+
   config.action_mailer.perform_caching = true
   config.action_mailer.default_url_options = {  host: '35.73.121.235' }
   config.action_mailer.raise_delivery_errors = true
