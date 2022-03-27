@@ -68,7 +68,7 @@
             <% if book.book_image.attached? %>
               <%= image_tag book.book_image, size:"120x140" %>
             <% else %>
-              <%= image_tag asset_path('no_image'), size:"120x140" %>
+              <%= image_tag asset_path('no_image.jpg'), size:"120x140" %>
             <% end %>
           <% end %>
       </div>
