@@ -34,19 +34,6 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.perform_caching = true
-  config.action_mailer.default_url_options = {  host: 'a3fbc519431e4e67a2518ae660c7158b.vfs.cloud9.ap-northeast-1.amazonaws.com', protocol:'https' }
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-      port: 587,
-      address: 'smtp.gmail.com',
-      domain: 'smtp.gmail.com',
-      user_name: ENV["KEY"],
-      password: ENV["SECRET_KEY"],
-      authentication: 'plain',
-      enable_starttls_auto: true
-    }
   
   config.action_mailer.perform_caching = false
 
@@ -87,4 +74,18 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
   config.hosts << "a3fbc519431e4e67a2518ae660c7158b.vfs.cloud9.ap-northeast-1.amazonaws.com"
   config.active_job.queue_adapter = :inline
+  
+  config.action_mailer.perform_caching = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = {  host: 'a3fbc519431e4e67a2518ae660c7158b.vfs.cloud9.ap-northeast-1.amazonaws.com', protocol: 'https' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    port: 587,
+    address: "smtp.gmail.com",
+    domain: 'smtp.gmail.com',
+    user_name: ENV["KEY"],
+    password: ENV["SECRET_KEY"],
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
 end
