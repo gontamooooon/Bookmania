@@ -82,7 +82,7 @@
               <li class="mb-3 list-unstyled"><i class="fas fa-calendar-day"></i>   <%=book.created_at.strftime("%Y/%m/%d") %></li>
               <li class="mb-3 list-unstyled"><i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>   <%= book.favorites.count %></li>
               <li class="mb-3 list-unstyled">
-                  <%= link_to book_path(book) do %>
+                  <%= link_to book_path(book), class:"text-dark" do %>
                      <%= render "book_comments/count", book: book %>
                   <% end %>
               </li>

@@ -30,10 +30,10 @@
           <div class="col-md-7 offset-3">
             <p class="card-title">
               <%= link_to(book_path(book), class:"text-dark") do %>
-                <strong><i class="fas fa-book"></i><span> <%= book.title %></span></strong>
+                <strong><i class="fas fa-book"></i><span>   <%= book.title %></span></strong>
               <% end %>
             </p>
-            <p class="card-text"><i class="fas fa-pen"></i><strong><%= book.author %></strong></p>
+            <p class="card-text"><i class="fas fa-pen"></i><strong>   <%= book.author %></strong></p>
             <p class="card-text"><%= render "static_rate", book: book %></p>
             <p class="card-text" id="favorite_buttons_<%= book.id %>">
               <%= render "favorites/favorite-btn", book: book %>
