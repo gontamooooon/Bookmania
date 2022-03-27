@@ -68,10 +68,10 @@ ActiveRecord::Schema.define(version: 2022_03_26_142153) do
   end
 
   create_table "contacts", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "email", null: false
-    t.string "phone_number", null: false
-    t.text "message", null: false
+    t.string "name"
+    t.string "email"
+    t.string "phone_number"
+    t.text "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
