@@ -121,7 +121,7 @@ Rails.application.configure do
   config.active_job.queue_adapter = :inline
   
   config.action_mailer.perform_caching = true
-  config.action_mailer.default_url_options = {  host: '35.73.121.235' }
+  config.action_mailer.default_url_options = { host: '35.73.121.235'}
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
