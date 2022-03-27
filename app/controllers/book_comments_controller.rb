@@ -1,19 +1,20 @@
 class BookCommentsController < ApplicationController
   def create
-    book = Book.find(params[:book_id])
-    comment = BookComment.new(book_comment_params)
-    comment.user_id = current_user.id
-    comment.book_id = book.id
-    if comment.save
-      redirect_to request.referer, notice: "コメントを投稿しました"
+    @book = Book.find(params[:book_id])
+    book_comment = BookComment.new(book_comment_params)
+    book_comment.user_id = current_user.id
+    book_comment.book_id = @book.id
+
+    if book_comment.save
+      # 保存が成功したとき
     else
-      redirect_to request.referer, alert: "コメント投稿ができませんでした"
+      # 保存が失敗したとき
     end
   end
 
   def destroy
+    @book = Book.find(params[:book_id])
     BookComment.find(params[:id]).destroy
-    redirect_to request.referer, notice: "コメントを削除しました"
   end
 
   private
