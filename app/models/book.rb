@@ -15,9 +15,6 @@ class Book < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
-  # ソート機能
-  scope :recent, -> { order(created_at: :desc) }
-
   # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"
@@ -32,4 +29,9 @@ class Book < ApplicationRecord
       @book = Book.all
     end
   end
+  
+  # ソート機能
+  #scope :recent, -> { order(created_at: :desc) }
+  
+  
 end

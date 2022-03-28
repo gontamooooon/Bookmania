@@ -28,7 +28,7 @@
       <div class="form-group row justify-content-center">
         <%= f.label :ジャンル, class:"col-2 col-form-label" %>
           <div class="col-5 mt-1">
-            <%= f.select :genre, options_for_select([["文芸"], ["実用書"],  ["ビジネス書"], ["絵本・児童書"],["学習参考書"],["専門書"],["コミック、雑誌"]]), { include_blank: '選択してください'}, class: "form-control" %>
+            <%= f.select :genre, options_for_select([["文芸"], ["実用書"],  ["ビジネス書"], ["絵本・児童書"], ["学習参考書"], ["専門書"], ["コミック、雑誌"]]), { include_blank: '選択してください'}, class: "form-control" %>
           </div>
       </div>
       <div class="form-group row justify-content-center ">
@@ -49,22 +49,22 @@
 
 
       <script>
-      //評価javascript
-      $(document).ready(function() {
-        $('#star').empty();
-        $('#star').raty({
-          size     : 36,
-          starOff:  '<%= asset_path('star-off.png') %>',
-          starOn : '<%= asset_path('star-on.png') %>',
-          starHalf: '<%= asset_path('star-half.png') %>',
-          scoreName: 'book[rate]',
-          score: <%= @book.rate %>,
-          half: true,
-        });
-      })
-
-      // select box
-      $('#book_genre').val('<%= @book.genre %>');
+        //☆評価javascript
+        $(document).ready(function() {
+          $('#star').empty();
+          $('#star').raty({
+            size     : 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            scoreName: 'book[rate]',
+            score: <%= @book.rate %>,
+            half: true,
+          });
+        })
+  
+        // select_box:
+        $('#book_genre').val('<%= @book.genre %>');
       </script>
 
       <div class="form-group row justify-content-center">
