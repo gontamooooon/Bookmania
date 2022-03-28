@@ -3,7 +3,7 @@ class Book < ApplicationRecord
   has_one_attached :book_image
   has_many :book_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  validates :title, :author, :genre, presence: true
+  validates :title, :author, :genre, :rate, presence: true
   validates :body, presence: true, length: { maximum: 500 }
 
   def get_book_image

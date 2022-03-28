@@ -14,7 +14,7 @@ ja:
         author: 著者
         genre: ジャンル
         body: レビュー
-        
+        rate: 評価
 
       user:
         name: 名前
