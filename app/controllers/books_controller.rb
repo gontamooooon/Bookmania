@@ -8,10 +8,8 @@ class BooksController < ApplicationController
     # Natural Language API
     # p "-------------"
     # p Language.get_data
-    
     @book.score = Language.get_data(book_params[:body])  #この行を追加
     @book.user_id = current_user.id
-    
     if @book.save
       redirect_to user_path(current_user), notice: "本の投稿ができました"
     else
