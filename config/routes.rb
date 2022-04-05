@@ -23,7 +23,7 @@ Rails.application.routes.draw do
       get :complete
     end
   end
-  
+
   get 'chat/:id', to: 'chats#show', as: 'chat'
   resources :chats, only: [:create]
 end

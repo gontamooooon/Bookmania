@@ -29,9 +29,7 @@ class Book < ApplicationRecord
       @book = Book.all
     end
   end
-  
+
   # ソート機能
-  #scope :recent, -> { order(created_at: :desc) }
-  
-  
+  # scope :recent, -> { order(created_at: :desc) }
 end
