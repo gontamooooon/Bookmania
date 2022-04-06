@@ -38,7 +38,7 @@
           <p class="card-text" id="favorite_buttons_<%= book.id %>">
             <%= render "favorites/favorite-btn", book: book %>
           </p>
-          <p class="card-text"><%= book.score %></p>
+          <p class="card-text"><i class="fas fa-hand-point-right"></i> <strong>点数：</strong><%= book.score %></p>
           <span><i class="fas fa-user"></i>   <%= book.user.name %> ｜ </span>
           <span><%= link_to "#{book.book_comments.count} コメント", book_path(book), class:"text-dark" %></span>
         </div>

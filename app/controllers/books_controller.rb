@@ -6,8 +6,6 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     # Natural Language API
-    # p "-------------"
-    # p Language.get_data
     @book.score = Language.get_data(book_params[:body])  #この行を追加
     @book.user_id = current_user.id
     if @book.save

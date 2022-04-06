@@ -86,6 +86,7 @@
                      <%= render "book_comments/count", book: book %>
                   <% end %>
               </li>
+              <li class="mb-3 list-unstyled"><i class="fas fa-hand-point-right"></i> <strong>点数</strong>   <%= book.score %></li>
               <li class="mb-3 list-unstyled">
                   <% if @user.id == current_user.id %>
                       <p>

@@ -20,7 +20,7 @@
            <%= render "book_comments/count", book: @book %>
          </div>
          <div class="col-md-12 mt-3">
-      	   <strong>点数</strong>   <%= @book.score %>
+      	   <i class="fas fa-hand-point-right"></i> <strong>点数</strong>   <%= @book.score %>
       	 </div>
          <div class="col-md-12 mt-3">
             <% if @book.user_id == current_user.id %>
