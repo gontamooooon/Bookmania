@@ -37,7 +37,7 @@ https://docs.google.com/spreadsheets/d/1NO37ccGjxV8rfwU-Psd3-zRPtvRuv5V1943S3nub
 https://docs.google.com/spreadsheets/d/1m-GOVRztPCw_I0X8VWrg6LJGNOIZFKLi/edit?usp=sharing&ouid=104975036966795147580&rtpof=true&sd=true
 
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Windows
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
