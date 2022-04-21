@@ -30,6 +30,6 @@ class Book < ApplicationRecord
     end
   end
 
-  # ソート機能
-  # scope :recent, -> { order(created_at: :desc) }
+  ソート機能
+  scope :recent, -> { order(created_at: :desc) }
 end
