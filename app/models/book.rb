@@ -29,6 +29,22 @@ class Book < ApplicationRecord
       @book = Book.all
     end
   end
+  
+  #ソート機能
+  def self.order_by(condition)
+    if condition == "new_arrival_order"
+      order(created_at: :desc)
+    elsif condition == "posting_order"
+      order(created_at: :asc)
+    elsif condition == "highly_rated"
+      order(rate: :desc)
+    elsif condition == "low_rating"
+      order(rate: :asc)
+    else
+      order(created_at: :desc)
+    end
+  end
+
 
   #ソート機能
   scope :recent, -> { order(created_at: :desc) }
