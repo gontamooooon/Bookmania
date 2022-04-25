@@ -18,19 +18,21 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
+    @books = Book.all.order_by(params[:sort]).page(params[:page])
+    
+    # @books = Book.all
     # ソート機能
-    if params[:sort] == "new_arrival_order"
-      @books = Book.page(params[:page]).order(created_at: :desc)
-    elsif params[:sort] == "posting_order"
-      @books = Book.page(params[:page]).order(created_at: :asc)
-    elsif params[:sort] == "highly_rated"
-      @books = Book.page(params[:page]).order(rate: :desc)
-    elsif params[:sort] == "low_rating"
-      @books = Book.page(params[:page]).order(rate: :asc)
-    else
-      @books = Book.page(params[:page]).order(created_at: :desc)
-    end
+    # if params[:sort] == "new_arrival_order"
+    #   @books = Book.page(params[:page]).order(created_at: :desc)
+    # elsif params[:sort] == "posting_order"
+    #   @books = Book.page(params[:page]).order(created_at: :asc)
+    # elsif params[:sort] == "highly_rated"
+    #   @books = Book.page(params[:page]).order(rate: :desc)
+    # elsif params[:sort] == "low_rating"
+    #   @books = Book.page(params[:page]).order(rate: :asc)
+    # else
+    #   @books = Book.page(params[:page]).order(created_at: :desc)
+    # end
   end
 
   def show

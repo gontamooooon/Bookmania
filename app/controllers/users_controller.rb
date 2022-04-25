@@ -13,19 +13,20 @@ class UsersController < ApplicationController
   end
 
   def show
-    # ソート機能
     @user = User.find(params[:id])
-    if params[:sort] == "new_arrival_order"
-      @books = @user.books.page(params[:page]).order(created_at: :desc)
-    elsif params[:sort] == "posting_order"
-      @books = @user.books.page(params[:page]).order(created_at: :asc)
-    elsif params[:sort] == "highly_rated"
-      @books = @user.books.page(params[:page]).order(rate: :desc)
-    elsif params[:sort] == "low_rating"
-      @books = @user.books.page(params[:page]).order(rate: :asc)
-    else
-      @books = @user.books.page(params[:page]).order(created_at: :desc)
-    end
+    @books = @user.books.order_by(params[:sort]).page(params[:page])
+    # ソート機能
+    # if params[:sort] == "new_arrival_order"
+    #   @books = @user.books.page(params[:page]).order(created_at: :desc)
+    # elsif params[:sort] == "posting_order"
+    #   @books = @user.books.page(params[:page]).order(created_at: :asc)
+    # elsif params[:sort] == "highly_rated"
+    #   @books = @user.books.page(params[:page]).order(rate: :desc)
+    # elsif params[:sort] == "low_rating"
+    #   @books = @user.books.page(params[:page]).order(rate: :asc)
+    # else
+    #   @books = @user.books.page(params[:page]).order(created_at: :desc)
+    # end
   end
 
   def edit
