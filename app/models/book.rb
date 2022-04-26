@@ -47,5 +47,5 @@ class Book < ApplicationRecord
 
 
   #ソート機能
-  scope :recent, -> { order(created_at: :desc) }
+  # scope :recent, -> { order(created_at: :desc) }
 end
