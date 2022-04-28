@@ -8,7 +8,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     # Natural Language API
-    @book.score = Language.get_data(book_params[:body])  #この行を追加
+    @book.score = Language.get_data(book_params[:body])
     @book.user_id = current_user.id
     if @book.save
       redirect_to user_path(current_user), notice: "本の投稿ができました"
@@ -20,8 +20,8 @@ class BooksController < ApplicationController
   def index
     @books = Book.all.order_by(params[:sort]).page(params[:page])
     
-    # @books = Book.all
     # ソート機能
+    # @books = Book.all
     # if params[:sort] == "new_arrival_order"
     #   @books = Book.page(params[:page]).order(created_at: :desc)
     # elsif params[:sort] == "posting_order"
