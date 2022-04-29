@@ -16,19 +16,35 @@ class Book < ApplicationRecord
   end
 
   # 検索方法分岐
-  def self.looks(search, word)
+  # FBに記載ありの方
+  def self.search_by_name(search, word)
     if search == "perfect_match"
-      @book = Book.where("title LIKE?", "#{word}")
+      where("name LIKE?", "#{word}")
     elsif search == "forward_match"
-      @book = Book.where("title LIKE?", "#{word}%")
+      where("name LIKE?", "#{word}%")
     elsif search == "backward_match"
-      @book = Book.where("title LIKE?", "%#{word}")
+      where("name LIKE?", "%#{word}")
     elsif search == "partical_match"
-      @book = Book.where("title LIKE?", "%#{word}%")
+      where("name LIKE?", "%#{word}%")
     else
-      @book = Book.all
+      all
     end
   end
+  
+  # FB記載なし=自分で実装した方
+  # def self.looks(search, word)
+  #   if search == "perfect_match"
+  #     @book = Book.where("title LIKE?", "#{word}")
+  #   elsif search == "forward_match"
+  #     @book = Book.where("title LIKE?", "#{word}%")
+  #   elsif search == "backward_match"
+  #     @book = Book.where("title LIKE?", "%#{word}")
+  #   elsif search == "partical_match"
+  #     @book = Book.where("title LIKE?", "%#{word}%")
+  #   else
+  #     @book = Book.all
+  #   end
+  # end
   
   #ソート機能
   def self.order_by(condition)
