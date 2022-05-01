@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user! , only: [:create, :update, :edit, :destroy]
   
   def new
     @book = Book.new
