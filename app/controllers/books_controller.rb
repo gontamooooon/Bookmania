@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :authenticate_user! , only: [:new, :create, :update, :edit, :destroy]
+  # before_action :ensure_correct_user, only: [:update]
   
   def new
     @book = Book.new
@@ -18,9 +19,10 @@ class BooksController < ApplicationController
   end
 
   def index
+    #修正版
     @books = Book.all.order_by(params[:sort]).page(params[:page])
     
-    # ソート機能
+    # ソート機能　3か月目に提出したもの
     # @books = Book.all
     # if params[:sort] == "new_arrival_order"
     #   @books = Book.page(params[:page]).order(created_at: :desc)

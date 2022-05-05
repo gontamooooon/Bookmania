@@ -14,8 +14,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    #修正版
     @books = @user.books.order_by(params[:sort]).page(params[:page])
-    # ソート機能
+    
+    # ソート機能　3か月目に提出
     # if params[:sort] == "new_arrival_order"
     #   @books = @user.books.page(params[:page]).order(created_at: :desc)
     # elsif params[:sort] == "posting_order"
