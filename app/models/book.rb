@@ -16,7 +16,7 @@ class Book < ApplicationRecord
   end
 
   # 検索方法分岐
-  # FBに記載ありの方
+  # FBに記載ありの方　looks→search_by_name（わかりやすく命名）
   def self.search_by_name(search, word)
     if search == "perfect_match"
       where("name LIKE?", "#{word}")
