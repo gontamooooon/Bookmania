@@ -10,19 +10,19 @@
       	 <div class="col-md-12 col-sm-12 mt-3">
       	   <strong>レビュー：</strong><%= @book.body %>
       	 </div>
-      	 <div class="col-md-12 mt-3">
+      	 <div class="col-md-12 col-sm-12 mt-3">
             <%= render "static_rate", book: @book %>
           </div>
-      	 <div class="col-md-12 mt-3" id="favorite_buttons_<%=@book.id %>">
+      	 <div class="col-md-12 col-sm-12 mt-3" id="favorite_buttons_<%=@book.id %>">
             <%= render "favorites/favorite-btn", book: @book %>
          </div>
-         <div class="col-md-12 mt-3" id="comments_count">
+         <div class="col-md-12 col-sm-12 mt-3" id="comments_count">
            <%= render "book_comments/count", book: @book %>
          </div>
-         <div class="col-md-12 mt-3">
+         <div class="col-md-12 col-sm-12 mt-3">
       	   <i class="fas fa-hand-point-right"></i> <strong>点数</strong>   <%= @book.score %>
       	 </div>
-         <div class="col-md-12 mt-3">
+         <div class="col-md-12 col-sm-12 mt-3">
             <% if @book.user_id == current_user.id %>
               <p>
                 <%= link_to '編集', edit_book_path(@book), class: "btn btn-sm btn-outline-success edit_book_#{@book.id}" %>
