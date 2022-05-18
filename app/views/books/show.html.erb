@@ -32,12 +32,12 @@
          </div>
 
           <!--コメントフォームの部分テンプレート-->
-         <div class="col-md-12 mt-3">
+         <div class="col-md-12 col-sm-12 mt-3">
             <%= render "book_comments/form", book: @book, book_comment: @book_comment %>
          </div>
 
          <!--コメント一覧部分-->
-         <div class="col-md-12 mt-3" id="comments_area">
+         <div class="col-md-12 col-sm-12 mt-3" id="comments_area">
             <%= render "book_comments/index", book: @book %>
          </div>
      </div>
