@@ -3,26 +3,26 @@
     <h3 class="p-5"><span class="header">■■■   <%= @book.title %>   ■■■</span></h3>
   </div>
   <div class="row">
-	 <div class="col-md-3 col-sm-3 offset-1 mt-3">
+	 <div class="col-md-3 offset-1 mt-3">
 	   <%= image_tag @book.get_book_image,size:"220x220", class:"shadow-lg" %>
 	 </div>
 	 <div class="col-md-8">
-      	 <div class="col-md-12 col-sm-12 mt-3">
+      	 <div class="col-md-12 mt-3">
       	   <strong>レビュー：</strong><%= @book.body %>
       	 </div>
-      	 <div class="col-md-12 col-sm-12 mt-3">
+      	 <div class="col-md-12 mt-3">
             <%= render "static_rate", book: @book %>
           </div>
-      	 <div class="col-md-12 col-sm-12 mt-3" id="favorite_buttons_<%=@book.id %>">
+      	 <div class="col-md-12 mt-3" id="favorite_buttons_<%=@book.id %>">
             <%= render "favorites/favorite-btn", book: @book %>
          </div>
-         <div class="col-md-12 col-sm-12 mt-3" id="comments_count">
+         <div class="col-md-12 mt-3" id="comments_count">
            <%= render "book_comments/count", book: @book %>
          </div>
-         <div class="col-md-12 col-sm-12 mt-3">
+         <div class="col-md-12 mt-3">
       	   <i class="fas fa-hand-point-right"></i> <strong>点数</strong>   <%= @book.score %>
       	 </div>
-         <div class="col-md-12 col-sm-12 mt-3">
+         <div class="col-md-12 mt-3">
             <% if @book.user_id == current_user.id %>
               <p>
                 <%= link_to '編集', edit_book_path(@book), class: "btn btn-sm btn-outline-success edit_book_#{@book.id}" %>
@@ -32,12 +32,12 @@
          </div>
 
           <!--コメントフォームの部分テンプレート-->
-         <div class="col-md-12 col-sm-12 mt-3">
+         <div class="col-md-12 mt-3">
             <%= render "book_comments/form", book: @book, book_comment: @book_comment %>
          </div>
 
          <!--コメント一覧部分-->
-         <div class="col-md-12 col-sm-12 mt-3" id="comments_area">
+         <div class="col-md-12 mt-3" id="comments_area">
             <%= render "book_comments/index", book: @book %>
          </div>
      </div>
