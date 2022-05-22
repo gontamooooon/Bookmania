@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :ensure_correct_user, only: [:update, :edit, :destroy, :create]
+  before_action :ensure_correct_user, only: [:update, :edit, :destroy, :create, :]
 
   def index
     @users = User.page(params[:page])
